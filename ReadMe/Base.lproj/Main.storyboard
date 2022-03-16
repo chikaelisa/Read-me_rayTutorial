@@ -216,7 +216,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="IXs-0z-Z8u">
-                                            <rect key="frame" x="20" y="5" width="143.5" height="90"/>
+                                            <rect key="frame" x="20" y="5" width="378" height="90"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KLE-fp-Dk1">
                                                     <rect key="frame" x="0.0" y="5" width="81" height="79.5"/>
@@ -227,22 +227,22 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-62-Or8">
-                                                    <rect key="frame" x="92" y="22" width="51.5" height="46.5"/>
+                                                    <rect key="frame" x="92" y="22" width="286" height="46.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrY-Kl-nr3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="51.5" height="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrY-Kl-nr3">
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="23"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Bs-i2a">
-                                                            <rect key="frame" x="0.0" y="26" width="51.5" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Bs-i2a">
+                                                            <rect key="frame" x="0.0" y="26" width="286" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npm-nf-Add">
-                                                            <rect key="frame" x="0.0" y="38.5" width="51.5" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="38.5" width="286" height="0.0"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
@@ -264,6 +264,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="IXs-0z-Z8u" firstAttribute="height" secondItem="VOs-IU-axe" secondAttribute="height" multiplier="0.9" id="8Au-Qt-w4O"/>
+                                        <constraint firstAttribute="trailing" secondItem="IXs-0z-Z8u" secondAttribute="trailing" constant="16" id="GTk-t4-WOJ"/>
                                         <constraint firstItem="IXs-0z-Z8u" firstAttribute="centerY" secondItem="VOs-IU-axe" secondAttribute="centerY" id="LeE-9Z-cS4"/>
                                         <constraint firstItem="IXs-0z-Z8u" firstAttribute="leading" secondItem="VOs-IU-axe" secondAttribute="leading" constant="20" symbolic="YES" id="UK1-3Z-uCK"/>
                                         <constraint firstAttribute="trailing" secondItem="uI5-Vb-NBQ" secondAttribute="trailing" constant="16" id="VJp-E3-aYS"/>

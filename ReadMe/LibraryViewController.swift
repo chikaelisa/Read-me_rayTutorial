@@ -54,7 +54,6 @@ class LibraryViewController: UITableViewController {
    
         
         return cell
-        
     }
 }
 

@@ -62,18 +62,19 @@ enum LibrarySymbol {
 
 // MARK:- Library
 enum Library {
+    static let review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     static let books: [Book] = [
-        Book(title: "Ein Neues Land", author: "Shaun Tan"),
-        Book(title: "Bosch", author: "Laurinda Dixon"),
-        Book(title: "Dare to Lead", author: "Brené Brown"),
-        Book(title: "Blasting for Optimum Health Recipe Book", author: "NutriBullet"),
-        Book(title: "Drinking with the Saints", author: "Michael P. Foley"),
-        Book(title: "A Guide to Tea", author: "Adagio Teas"),
-        Book(title: "The Life and Complete Work of Francisco Goya", author: "P. Gassier & J Wilson"),
-        Book(title: "Lady Cottington's Pressed Fairy Book", author: "Lady Cottington"),
-        Book(title: "How to Draw Cats", author: "Janet Rancan"),
-        Book(title: "Drawing People", author: "Barbara Bradley"),
-        Book(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter")
+        Book(title: "Ein Neues Land", author: "Shaun Tan", review: Library.review),
+        Book(title: "Bosch", author: "Laurinda Dixon", review: Library.review),
+        Book(title: "Dare to Lead", author: "Brené Brown", review: Library.review),
+        Book(title: "Blasting for Optimum Health Recipe Book", author: "NutriBullet", review: Library.review),
+        Book(title: "Drinking with the Saints", author: "Michael P. Foley", review: Library.review),
+        Book(title: "A Guide to Tea", author: "Adagio Teas", review: Library.review),
+        Book(title: "The Life and Complete Work of Francisco Goya", author: "P. Gassier & J Wilson", review: Library.review),
+        Book(title: "Lady Cottington's Pressed Fairy Book", author: "Lady Cottington", review: Library.review),
+        Book(title: "How to Draw Cats", author: "Janet Rancan", review: Library.review),
+        Book(title: "Drawing People", author: "Barbara Bradley", review: Library.review),
+        Book(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter", review: Library.review)
     ]
     
     static func saveImage(_ image: UIImage, forBook book: Book) {

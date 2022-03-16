@@ -2,7 +2,7 @@ import UIKit
 
 class DetailViewController: UITableViewController {
     
-    let book: Book
+    var book: Book
     
     @IBOutlet var reviewTextView: UITextView!
     @IBOutlet var titleLabel: UILabel!
@@ -24,13 +24,15 @@ class DetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewTextView.delegate = self
         imageView.image = book.image
         imageView.layer.cornerRadius = 16
         titleLabel.text = book.title
         authorLabel.text = book.author
-        
         reviewTextView.addDoneButton()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
         if let review = book.review {
             reviewTextView.text = review
         }
@@ -61,7 +63,6 @@ extension DetailViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
     }
-    
 }
 
 extension UITextView {

@@ -51,9 +51,19 @@ class LibraryViewController: UITableViewController {
         cell.bookThumbnail.layer.cornerRadius = 12
         
         cell.isAccessibilityElement = true
-   
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            Library.books.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        
     }
 }
 

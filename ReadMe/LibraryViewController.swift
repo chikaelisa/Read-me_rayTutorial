@@ -53,19 +53,28 @@ class LibraryViewController: UITableViewController {
         cell.isAccessibilityElement = true
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "deletar") { (action, view, completionHandler) in
+            Library.books.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        delete.image = UIImage(systemName: "trash")
+        delete.backgroundColor = .red
+        
+        let pin = UIContextualAction(style: .normal, title: Library.books[indexPath.row].isPinned ? "desafixar" : "fixar") { (action, view, completionHandler) in
+            Library.books[indexPath.row].isPinned.toggle()
+            Library.sort()
+            tableView.reloadData()
+        }
+        
+        pin.image = UIImage(systemName: "pin.fill")
+        pin.backgroundColor = .orange
+        
+        let swipe = UISwipeActionsConfiguration(actions: [delete, pin])
+        return swipe
+    }
 }
 
-extension LibraryViewController {
-    func configureAcessibilityCell(cell: inout BookCell) {
-        cell.isAccessibilityElement = true
-        configureCustomActions(&cell)
-    }
-    @objc func teste() {
-    
-    }
-    func configureCustomActions(_ cell: inout BookCell) {
-        let deleteAction = UIAccessibilityCustomAction(name: "delete", target: self, selector: #selector(teste))
-        cell.accessibilityCustomActions = [deleteAction]
-    }
-}
 

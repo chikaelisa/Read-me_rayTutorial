@@ -76,7 +76,14 @@ enum Library {
         Book(title: "Drawing People", author: "Barbara Bradley", review: Library.review),
         Book(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter", review: Library.review)
     ]
-    
+    static func sort() {
+        books.sort {
+            if $0.isPinned == $1.isPinned {
+                return $0.title < $1.title
+            }
+            return $0.isPinned
+        }
+    }
     static func saveImage(_ image: UIImage, forBook book: Book) {
         let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(book.title)
         if let jpgData = image.jpegData(compressionQuality: 0.7) {

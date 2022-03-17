@@ -11,6 +11,7 @@ class LibraryViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        Library.sort()
         // Do any additional setup after loading the view.
     }
     
@@ -49,17 +50,22 @@ class LibraryViewController: UITableViewController {
         cell.authorLabel.text = book.author
         cell.bookThumbnail.image = book.image
         cell.bookThumbnail.layer.cornerRadius = 12
-        
         cell.isAccessibilityElement = true
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            Library.books.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
 }
 
+extension LibraryViewController {
+    func configureAcessibilityCell(cell: inout BookCell) {
+        cell.isAccessibilityElement = true
+        configureCustomActions(&cell)
+    }
+    @objc func teste() {
+    
+    }
+    func configureCustomActions(_ cell: inout BookCell) {
+        let deleteAction = UIAccessibilityCustomAction(name: "delete", target: self, selector: #selector(teste))
+        cell.accessibilityCustomActions = [deleteAction]
+    }
+}
 

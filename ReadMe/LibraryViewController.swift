@@ -45,12 +45,18 @@ class LibraryViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookCell.self)", for: indexPath) as? BookCell
         else {fatalError("Could not create BooCell")}
         let book = Library.books[indexPath.row]
-        
+        cell.delegate = self
         cell.titleLabel .text = book.title
         cell.authorLabel.text = book.author
         cell.bookThumbnail.image = book.image
         cell.bookThumbnail.layer.cornerRadius = 12
-        cell.isAccessibilityElement = true
+        cell.delegate?.configureAccessibility()
+        if book.isPinned {
+            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
+        }
+        else {
+            cell.backgroundColor  = nil
+        }
         return cell
     }
     
@@ -74,6 +80,42 @@ class LibraryViewController: UITableViewController {
         
         let swipe = UISwipeActionsConfiguration(actions: [delete, pin])
         return swipe
+    }
+    
+    @objc func didTouchDeleteCellAction() -> Bool {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return false }
+        Library.books.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        return true
+    }
+    
+    @objc func didTouchPinCellAction() -> Bool {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return false }
+        Library.books[indexPath.row].isPinned.toggle()
+        Library.sort()
+        tableView.reloadData()
+        return true
+    }
+}
+
+extension LibraryViewController: CustomActionsDelegate {
+    func configureAccessibility() {
+        isAccessibilityElement = true
+        let deleteAction = UIAccessibilityCustomAction(
+            name: "Deletar",
+            target: self,
+            selector: #selector(didTouchDeleteCellAction))
+        
+        let pinAction = UIAccessibilityCustomAction(
+            name: "Fixar",
+            target: self,
+            selector: #selector(didTouchPinCellAction))
+        
+        accessibilityCustomActions =
+        [
+            deleteAction,
+            pinAction
+        ]
     }
 }
 

@@ -33,32 +33,6 @@ class LibraryViewController: UITableViewController {
         //is setion equal 0? Than returns 1, otherwise, returns library.book.count
         return section == 0 ? 1 : Library.books.count
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath == IndexPath(row: 0, section: 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewBookCell", for: indexPath)
-            
-            return cell
-        }
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookCell.self)", for: indexPath) as? BookCell
-        else {fatalError("Could not create BooCell")}
-        let book = Library.books[indexPath.row]
-        cell.delegate = self
-        cell.titleLabel .text = book.title
-        cell.authorLabel.text = book.author
-        cell.bookThumbnail.image = book.image
-        cell.bookThumbnail.layer.cornerRadius = 12
-        cell.delegate?.configureAccessibility()
-        if book.isPinned {
-            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
-        }
-        else {
-            cell.backgroundColor  = nil
-        }
-        return cell
-    }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "deletar") { (action, view, completionHandler) in
@@ -80,6 +54,33 @@ class LibraryViewController: UITableViewController {
         
         let swipe = UISwipeActionsConfiguration(actions: [delete, pin])
         return swipe
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath == IndexPath(row: 0, section: 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewBookCell", for: indexPath)
+            
+            return cell
+        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookCell.self)", for: indexPath) as? BookCell
+        else {fatalError("Could not create BooCell")}
+        let book = Library.books[indexPath.row]
+        cell.titleLabel .text = book.title
+        cell.authorLabel.text = book.author
+        cell.bookThumbnail.image = book.image
+        cell.bookThumbnail.layer.cornerRadius = 12
+        if book.isPinned {
+            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
+        }
+        else {
+            cell.backgroundColor  = nil
+        }
+        
+        cell.delegate?.configureAccessibility()
+        cell.delegate = self
+        return cell
     }
     
     @objc func didTouchDeleteCellAction() -> Bool {

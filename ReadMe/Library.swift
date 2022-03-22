@@ -62,20 +62,28 @@ enum LibrarySymbol {
 
 // MARK:- Library
 enum Library {
-    static let books: [Book] = [
-        Book(title: "Ein Neues Land", author: "Shaun Tan"),
-        Book(title: "Bosch", author: "Laurinda Dixon"),
-        Book(title: "Dare to Lead", author: "Brené Brown"),
-        Book(title: "Blasting for Optimum Health Recipe Book", author: "NutriBullet"),
-        Book(title: "Drinking with the Saints", author: "Michael P. Foley"),
-        Book(title: "A Guide to Tea", author: "Adagio Teas"),
-        Book(title: "The Life and Complete Work of Francisco Goya", author: "P. Gassier & J Wilson"),
-        Book(title: "Lady Cottington's Pressed Fairy Book", author: "Lady Cottington"),
-        Book(title: "How to Draw Cats", author: "Janet Rancan"),
-        Book(title: "Drawing People", author: "Barbara Bradley"),
-        Book(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter")
-    ]
-    
+    static let review = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    static var books: [Book] = [
+            Book(title: "A chegada", author: "Shaun Tan", review: Library.review),
+            Book(title: "Bosch", author: "Laurinda Dixon", review: Library.review),
+            Book(title: "A coragem de ser imperfeito", author: "Brené Brown", review: Library.review),
+            Book(title: "Twilight", author: "Stephanie Meyer", review: Library.review),
+            Book(title: "Clube da Luta", author: "Chuck Palahniuk", review: Library.review),
+            Book(title: "It - A coisa", author: "Stephen King", review: Library.review),
+            Book(title: "A vida e trabalho de Francisco Goya", author: "P. Gassier & J Wilson", review: Library.review),
+            Book(title: "Fadas prensadas de Lady Cottington", author: "Lady Cottington", review: Library.review),
+            Book(title: "Como desenhar gatos", author: "Janet Rancan", review: Library.review),
+            Book(title: "Desenhando pessoas", author: "Barbara Bradley", review: Library.review),
+            Book(title: "O que dizer quando você fala consigo mesmo", author: "Shad Helmstetter", review: Library.review)
+        ]
+    static func sort() {
+        books.sort {
+            if $0.isPinned == $1.isPinned {
+                return $0.title < $1.title
+            }
+            return $0.isPinned
+        }
+    }
     static func saveImage(_ image: UIImage, forBook book: Book) {
         let imageURL = FileManager.documentDirectoryURL.appendingPathComponent(book.title)
         if let jpgData = image.jpegData(compressionQuality: 0.7) {

@@ -11,6 +11,7 @@ class LibraryViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        Library.sort()
         // Do any additional setup after loading the view.
     }
     
@@ -32,6 +33,28 @@ class LibraryViewController: UITableViewController {
         //is setion equal 0? Than returns 1, otherwise, returns library.book.count
         return section == 0 ? 1 : Library.books.count
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "deletar") { (action, view, completionHandler) in
+            Library.books.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        delete.image = UIImage(systemName: "trash")
+        delete.backgroundColor = .red
+        
+        let pin = UIContextualAction(style: .normal, title: Library.books[indexPath.row].isPinned ? "desafixar" : "Fixar") { (action, view, completionHandler) in
+            Library.books[indexPath.row].isPinned.toggle()
+            Library.sort()
+            tableView.reloadData()
+        }
+        
+        pin.image = UIImage(systemName: "pin.fill")
+        pin.backgroundColor = .orange
+        
+        let swipe = UISwipeActionsConfiguration(actions: [delete, pin])
+        return swipe
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -42,19 +65,26 @@ class LibraryViewController: UITableViewController {
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookCell.self)", for: indexPath) as? BookCell
-        else {fatalError("Could not create BooCell")}
+        else {fatalError("Could not create BookCell")}
         let book = Library.books[indexPath.row]
-        
         cell.titleLabel .text = book.title
         cell.authorLabel.text = book.author
         cell.bookThumbnail.image = book.image
         cell.bookThumbnail.layer.cornerRadius = 12
-        
-        cell.isAccessibilityElement = true
-   
-        
+        cell.backgroundColor = book.isPinned ? UIColor.blue.withAlphaComponent(0.05) : nil
+        cell.isAccessibilityElement = false
         return cell
-        
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        }
+        else {
+            return 175
+        }
     }
 }
+
+
+
 

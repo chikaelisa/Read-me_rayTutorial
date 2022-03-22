@@ -8,5 +8,5 @@ class BookCell: UITableViewCell {
     
     @IBOutlet var readMeBookmark: UIImageView!
     @IBOutlet var bookThumbnail: UIImageView!
-    
+
 }

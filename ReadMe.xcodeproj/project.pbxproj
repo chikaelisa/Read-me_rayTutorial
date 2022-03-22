@@ -19,6 +19,7 @@
 		1695182327ADEF9700EE849A /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1695182227ADEF9700EE849A /* Library.swift */; };
 		16B25AB127B34079000A4DBB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B25AB027B34079000A4DBB /* DetailViewController.swift */; };
 		16B25AB327B4360E000A4DBB /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B25AB227B4360E000A4DBB /* BookCell.swift */; };
+		599704BE27E894E90029E42C /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599704BD27E894E90029E42C /* Auxiliar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1695182227ADEF9700EE849A /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		16B25AB027B34079000A4DBB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		16B25AB227B4360E000A4DBB /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		599704BD27E894E90029E42C /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				161E4E2C27AC730D004A3BD2 /* Info.plist */,
 				161E4E2927AC730D004A3BD2 /* LaunchScreen.storyboard */,
 				1695182227ADEF9700EE849A /* Library.swift */,
+				599704BD27E894E90029E42C /* Auxiliar.swift */,
 				161E4E2227AC730B004A3BD2 /* LibraryViewController.swift */,
 				161E4E2427AC730B004A3BD2 /* Main.storyboard */,
 				160DA5CB27B473100087A89A /* NewBookCell.swift */,
@@ -164,6 +167,7 @@
 				16B25AB327B4360E000A4DBB /* BookCell.swift in Sources */,
 				16B25AB127B34079000A4DBB /* DetailViewController.swift in Sources */,
 				161E4E1F27AC730B004A3BD2 /* AppDelegate.swift in Sources */,
+				599704BE27E894E90029E42C /* Auxiliar.swift in Sources */,
 				161E4E2127AC730B004A3BD2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +317,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8VP3WGJ23G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReadMe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -340,6 +345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8VP3WGJ23G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ReadMe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

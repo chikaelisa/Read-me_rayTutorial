@@ -43,7 +43,7 @@ class LibraryViewController: UITableViewController {
         delete.image = UIImage(systemName: "trash")
         delete.backgroundColor = .red
         
-        let pin = UIContextualAction(style: .normal, title: Library.books[indexPath.row].isPinned ? "desafixar" : "fixar") { (action, view, completionHandler) in
+        let pin = UIContextualAction(style: .normal, title: Library.books[indexPath.row].isPinned ? "desafixar" : "Fixar") { (action, view, completionHandler) in
             Library.books[indexPath.row].isPinned.toggle()
             Library.sort()
             tableView.reloadData()
@@ -65,59 +65,26 @@ class LibraryViewController: UITableViewController {
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BookCell.self)", for: indexPath) as? BookCell
-        else {fatalError("Could not create BooCell")}
+        else {fatalError("Could not create BookCell")}
         let book = Library.books[indexPath.row]
         cell.titleLabel .text = book.title
         cell.authorLabel.text = book.author
         cell.bookThumbnail.image = book.image
         cell.bookThumbnail.layer.cornerRadius = 12
-        if book.isPinned {
-            cell.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
-        }
-        else {
-            cell.backgroundColor  = nil
-        }
-        
-        cell.delegate?.configureAccessibility()
-        cell.delegate = self
+        cell.backgroundColor = book.isPinned ? UIColor.blue.withAlphaComponent(0.05) : nil
+        cell.isAccessibilityElement = false
         return cell
     }
-    
-    @objc func didTouchDeleteCellAction() -> Bool {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return false }
-        Library.books.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        return true
-    }
-    
-    @objc func didTouchPinCellAction() -> Bool {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return false }
-        Library.books[indexPath.row].isPinned.toggle()
-        Library.sort()
-        tableView.reloadData()
-        return true
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        }
+        else {
+            return 175
+        }
     }
 }
 
-extension LibraryViewController: CustomActionsDelegate {
-    func configureAccessibility() {
-        isAccessibilityElement = true
-        let deleteAction = UIAccessibilityCustomAction(
-            name: "Deletar",
-            target: self,
-            selector: #selector(didTouchDeleteCellAction))
-        
-        let pinAction = UIAccessibilityCustomAction(
-            name: "Fixar",
-            target: self,
-            selector: #selector(didTouchPinCellAction))
-        
-        accessibilityCustomActions =
-        [
-            deleteAction,
-            pinAction
-        ]
-    }
-}
+
 
 

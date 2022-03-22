@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vac-Lq-nYk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vac-Lq-nYk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -208,18 +208,18 @@
                                     <segue destination="ie6-rR-vo0" kind="show" id="b1Q-E8-hvr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" id="ILd-NM-WRF" customClass="BookCell" customModule="ReadMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="144.5" width="414" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="175" id="ILd-NM-WRF" customClass="BookCell" customModule="ReadMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144.5" width="414" height="175"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ILd-NM-WRF" id="VOs-IU-axe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="IXs-0z-Z8u">
-                                            <rect key="frame" x="20" y="5" width="378" height="90"/>
+                                            <rect key="frame" x="20" y="9" width="378" height="157.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KLE-fp-Dk1">
-                                                    <rect key="frame" x="0.0" y="5" width="81" height="79.5"/>
+                                                    <rect key="frame" x="0.0" y="8" width="142" height="140.5"/>
                                                     <color key="tintColor" systemColor="placeholderTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="KLE-fp-Dk1" secondAttribute="height" id="Qjs-46-8DW"/>
@@ -227,22 +227,22 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-62-Or8">
-                                                    <rect key="frame" x="92" y="22" width="286" height="46.5"/>
+                                                    <rect key="frame" x="153" y="55.5" width="225" height="46.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrY-Kl-nr3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="23"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="225" height="23"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-Bs-i2a">
-                                                            <rect key="frame" x="0.0" y="26" width="286" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="26" width="225" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npm-nf-Add">
-                                                            <rect key="frame" x="0.0" y="38.5" width="286" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="38.5" width="225" height="0.0"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
@@ -253,7 +253,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uI5-Vb-NBQ">
-                                                    <rect key="frame" x="378" y="28.5" width="0.0" height="33.5"/>
+                                                    <rect key="frame" x="378" y="62" width="0.0" height="33.5"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28"/>
                                                 </imageView>
                                             </subviews>

@@ -9,9 +9,4 @@ class BookCell: UITableViewCell {
     @IBOutlet var readMeBookmark: UIImageView!
     @IBOutlet var bookThumbnail: UIImageView!
 
-    var delegate: CustomActionsDelegate?
-}
-
-protocol CustomActionsDelegate {
-    func configureAccessibility()
 }

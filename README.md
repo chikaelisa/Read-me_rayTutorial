@@ -6,5 +6,5 @@ Desenvolvido em UIKit, Swift
 Nesse código você encontrará alguns comentários em português. 
 
 As funcionalidades de custom actions não estão no tutorial do Ray e foram desenvolvidas em parceria com 
-@luizgustavo09 e Natália Vilela
+@luizgustavo09 e @vilelanatalia
 

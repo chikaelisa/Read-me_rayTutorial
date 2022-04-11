@@ -78,10 +78,10 @@ enum Library {
         ]
     static func sort() {
         books.sort {
-            if $0.isPinned == $1.isPinned {
+            if $0.readed == $1.readed {
                 return $0.title < $1.title
             }
-            return $0.isPinned
+            return $0.readed
         }
     }
     static func saveImage(_ image: UIImage, forBook book: Book) {

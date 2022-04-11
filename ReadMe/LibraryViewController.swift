@@ -35,32 +35,46 @@ class LibraryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "deletar") { (action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Deletar") { (action, view, completionHandler) in
             Library.books.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             completionHandler(true)
         }
-        delete.image = UIImage(systemName: "trash")
-        delete.backgroundColor = .red
+        deleteAction.backgroundColor = .red
+        deleteAction.image = UIImage(systemName: "trash")
         
-        let pin = UIContextualAction(style: .normal, title: Library.books[indexPath.row].isPinned ? "desafixar" : "Fixar") { (action, view, completionHandler) in
-            Library.books[indexPath.row].isPinned.toggle()
-            Library.sort()
-            tableView.reloadData()
-        }
-        
-        pin.image = UIImage(systemName: "pin.fill")
-        pin.backgroundColor = .orange
-        
-        let swipe = UISwipeActionsConfiguration(actions: [delete, pin])
+        let swipe = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipe
     }
-
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let book = Library.books[indexPath.row]
+    
+        let readAction = UIContextualAction(style: .normal, title: book.readed ? "Não lido" : "Lido") { (action, view, completionHandler) in
+            Library.books[indexPath.row].readed.toggle()
+            Library.sort()
+            tableView.reloadData()
+            completionHandler(true)
+        }
+        readAction.accessibilityHint = ""
+        readAction.image = UIImage(systemName: "message.fill")
+        readAction.backgroundColor = .orange
+    
+        let favoriteAction = UIContextualAction(style: .normal, title: book.isFavorite ? "Desfavoritar" : "Favoritar") { (action, view, completionHandler) in
+            Library.books[indexPath.row].isFavorite.toggle()
+            completionHandler(true)
+        }
+        favoriteAction.image = UIImage(systemName: book.isFavorite ? "star.slash.fill" : "star.fill")
+        favoriteAction.backgroundColor = .blue
+    
+        let swipe = UISwipeActionsConfiguration(actions: [readAction, favoriteAction])
+        return swipe
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath == IndexPath(row: 0, section: 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewBookCell", for: indexPath)
-            
             return cell
         }
         
@@ -71,17 +85,10 @@ class LibraryViewController: UITableViewController {
         cell.authorLabel.text = book.author
         cell.bookThumbnail.image = book.image
         cell.bookThumbnail.layer.cornerRadius = 12
-        cell.backgroundColor = book.isPinned ? UIColor.blue.withAlphaComponent(0.05) : nil
-        cell.isAccessibilityElement = false
+        cell.backgroundColor = book.readed ? UIColor.blue.withAlphaComponent(0.05) : nil
+        cell.isAccessibilityElement = true
+        cell.accessibilityHint = "Deslize para cima ou para baixo para ações personalizadas"
         return cell
-    }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 100
-        }
-        else {
-            return 175
-        }
     }
 }
 
